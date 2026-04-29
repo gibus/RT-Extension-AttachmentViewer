@@ -18,7 +18,7 @@ By default, when attachments are to be uploaded in RT, the dropzone where there 
 
 =head1 RT VERSION
 
-Works with RT 6.
+Works with RT 5 and RT 6.
 
 =head1 INSTALLATION
 
@@ -26,7 +26,7 @@ Works with RT 6.
 
 =item export C<$RTHOME=/home/of/your/RT/installation/lib>
 
-This is needed if your C<RT> installation directory is not C</opt/rt6/>.
+This is needed if your C<RT> installation directory is not C</opt/rt6/> for RT 6 nor C/opt/rt5/> for RT 5.
 
 =item C<perl Makefile.PL>
 

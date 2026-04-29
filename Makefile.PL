@@ -7,7 +7,8 @@ license 'gpl_3';
 repository 'https://github.com/gibus/RT-Extension-ModifyUsersPrefs';
 all_from 'lib/RT/Extension/AttachmentViewer.pm';
 
-requires_rt('6.0.0');
+requires_rt('5.0.0');
+rt_too_new('6.1.0');
 
 readme_from 'lib/RT/Extension/AttachmentViewer.pm', 0, 'md', 'README.md';
 

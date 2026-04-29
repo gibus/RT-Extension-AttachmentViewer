@@ -47,12 +47,25 @@
         modal.setAttribute('tabindex', '-1');
         const modal_title = loc_key('Attachment');
 
+        var close_class, data_dismiss,  close_content, bg_transparent;
+        if (RT.AttachmentViewerRT6) {
+            close_class = 'btn-close m-2 end-0';
+            data_dismiss = 'data-bs-dismiss';
+            close_content = '';
+            bg_transparent = '';
+        } else {
+            close_class = 'btn close dropdown-menu-right';
+            data_dismiss = 'data-dismiss';
+            close_content = '<span aria-hidden="true">&times;</span>';
+            bg_transparent = ' style="background-color: transparent;"';
+        }
+
         modal.innerHTML = `
         <div class="modal-dialog modal-xl" style="max-width: 90vw;">
             <div class="modal-content" style="height: 90vh;">
                 <div class="modal-header position-relative pb-0" style="background-color: var(--bs-modal-bg);">
-                    <div class="modal-title fs-6" id="menu-modal-label">${modal_title}</div>
-                    <button type="button" class="btn-close position-absolute top-0 end-0 m-2" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-title fs-6">${modal_title}</div>
+                    <button type="button" class="${close_class} position-absolute top-0" ${data_dismiss}="modal" aria-label="Close"${bg_transparent}>${close_content}</button>
                 </div>
                 <div class="modal-body"
                      style="height:100%; overflow:hidden; padding:0;">
