@@ -187,14 +187,15 @@
             jQuery('#attachment-modal').modal('show');
         }
     }
-    
-
 
     // DROPZONE
     function attachDropzoneHandler(dropzone) {
         dropzone.on("addedfile", async function(file) {
             var preview = file.previewElement;
             if (!preview) return;
+
+            if (preview.dataset.viewerBound) return;
+            preview.dataset.viewerBound = "1";
 
             preview.style.cursor = "pointer";
             preview.onclick = async function() {
