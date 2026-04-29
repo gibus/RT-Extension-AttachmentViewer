@@ -1,0 +1,85 @@
+package RT::Extension::AttachmentViewer;
+
+use utf8;
+use strict;
+use warnings;
+
+our $VERSION = '0.01';
+
+=encoding utf8
+
+=head1 NAME
+
+RT::Extension::AttachmentViewer - View full size attachments from the dropzone
+
+=head1 DESCRIPTION
+
+By default, when attachments are to be uploaded in RT, the dropzone where there are added shows a thunbmbnail. This extention allows to click on the thumbnail to view the full size attachment in a popup, whether it's an image, a PDF, an audio, an HTML or a text file, otherwise it can be downloaded in your browser.
+
+=head1 RT VERSION
+
+Works with RT 6.
+
+=head1 INSTALLATION
+
+=over
+
+=item export C<$RTHOME=/home/of/your/RT/installation/lib>
+
+This is needed if your C<RT> installation directory is not C</opt/rt6/>.
+
+=item C<perl Makefile.PL>
+
+=item C<make>
+
+=item C<make install>
+
+May need root permissions
+
+=item Edit your F</opt/rt6/etc/RT_SiteConfig.pm>
+
+Add this line:
+
+    Plugin('RT::Extension::AttachmentViewer');
+
+or add C<RT::Extension::AttachmentViewer> to your existing C<@Plugins> line.
+
+=item Clear your mason cache
+
+    rm -rf /opt/rt6/var/mason_data/obj
+
+=item Restart your webserver
+
+=back
+
+=cut
+
+=head1 AUTHOR
+
+Gérald Sédrati E<lt>gibus@easter-eggs.comE<gt>
+
+=head1 REPOSITORY
+
+L<https://github.com/gibus/RT-Extension-AttachmentViewer>
+
+=head1 BUGS
+
+All bugs should be reported via email to
+
+L<bug-RT-Extension-AttachmentViewer@rt.cpan.org|mailto:bug-RT-Extension-AttachmentViewer@rt.cpan.org>
+
+or via the web at
+
+L<rt.cpan.org|http://rt.cpan.org/Public/Dist/Display.html?Name=RT-Extension-AttachmentViewer>.
+
+=head1 LICENSE AND COPYRIGHT
+
+This software is Copyright (c) 2026 by Gérald Sédrati, Easter-Eggs
+
+This is free software, licensed under:
+
+The GNU General Public License, Version 3, June 2007
+
+=cut
+
+1;

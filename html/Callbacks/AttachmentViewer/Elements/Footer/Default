@@ -1,0 +1,4 @@
+<script src="<% RT->Config->Get('WebPath') %>/static/js/attachment-viewer.js"></script>
+<%INIT>
+return unless $m->base_comp->path =~ m{/Elements/Footer};
+</%INIT>
