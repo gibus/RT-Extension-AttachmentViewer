@@ -8,13 +8,13 @@ By default, when attachments are to be uploaded in RT, the dropzone where there 
 
 # RT VERSION
 
-Works with RT 6.
+Works with RT 5 and RT 6.
 
 # INSTALLATION
 
 - export `$RTHOME=/home/of/your/RT/installation/lib`
 
-    This is needed if your `RT` installation directory is not `/opt/rt6/`.
+    This is needed if your `RT` installation directory is not `/opt/rt6/` for RT 6 nor C/opt/rt5/> for RT 5.
 
 - `perl Makefile.PL`
 - `make`
