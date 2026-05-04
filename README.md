@@ -4,7 +4,7 @@ RT::Extension::AttachmentViewer - View full size attachments from the dropzone
 
 # DESCRIPTION
 
-By default, when attachments are to be uploaded in RT, the dropzone where there are added shows a thunbmbnail. This extention allows to click on the thumbnail to view the full size attachment in a popup, whether it's an image, a PDF, an audio, an HTML or a text file, otherwise it can be downloaded in your browser.
+By default, when attachments are to be uploaded in RT, the dropzone where they are added shows a thubmbnail. This extension enhances the attachment dropzone in RT by allowing users to click on a file preview to display it in a modal viewer. It supports images, PDFs, audio, HTML, and text files. Other file types are opened using the browser's default behavior.
 
 # RT VERSION
 
@@ -22,7 +22,7 @@ Works with RT 5 and RT 6.
 
     May need root permissions
 
-- Edit your `/opt/rt6/etc/RT_SiteConfig.pm`
+- Edit your `RT_SiteConfig.pm` (usually located in /opt/rt5/etc or /opt/rt6/etc)
 
     Add this line:
 
