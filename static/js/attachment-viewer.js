@@ -28,8 +28,13 @@
     }
 
     async function getMimeInfo(attachmentId) {
+        if (!window.fetch) {
+            return { mime: "application/octet-stream" };
+        }
+
         try {
-            let res = await fetch(`/Helpers/AttachmentInfo?id=${attachmentId}`);
+            const base = (window.RT && RT.Config && RT.Config.WebPath) || '';
+            let res = await fetch(`${base}/Helpers/AttachmentInfo?id=${attachmentId}`);
             return await res.json();
         } catch (e) {
             return { mime: "application/octet-stream" };
@@ -68,7 +73,7 @@
                     <button type="button" class="${close_class} position-absolute top-0" ${data_dismiss}="modal" aria-label="Close"${bg_transparent}>${close_content}</button>
                 </div>
                 <div class="modal-body"
-                     style="height:100%; overflow:hidden; padding:0;">
+                     style="height:100%; overflow:auto; padding:0;">
 
                     <img id="attachment-image"
                          style="max-width:100%; max-height:100%; display:none;" />
@@ -166,6 +171,11 @@
             mime === "application/json" ||
             mime === "application/xml"
         ) {
+            if (!window.fetch) {
+                window.open(url);
+                return;
+            }
+
             fetch(url)
                 .then(r => r.text())
                 .then(txt => {
@@ -211,16 +221,21 @@
     function init() {
         if (!window.Dropzone) return;
 
-        Dropzone.instances.forEach(function(dz) {
+        var instances = Dropzone.instances || [];
+        instances.forEach(function(dz) {
             attachDropzoneHandler(dz);
         });
 
-        var origInit = Dropzone.prototype.init;
+        if (!Dropzone.prototype._attachmentViewerPatched) {
+            Dropzone.prototype._attachmentViewerPatched = true;
 
-        Dropzone.prototype.init = function() {
-            origInit.apply(this, arguments);
-            attachDropzoneHandler(this);
-        };
+            var origInit = Dropzone.prototype.init;
+
+            Dropzone.prototype.init = function() {
+                origInit.apply(this, arguments);
+                attachDropzoneHandler(this);
+            };
+        }
     }
 
     if (document.readyState === "loading") {

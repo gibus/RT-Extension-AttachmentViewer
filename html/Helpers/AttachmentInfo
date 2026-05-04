@@ -14,9 +14,9 @@ unless ($att->id) {
 
 # Check ACL
 my $txn = $att->TransactionObj;
-my $ticket = $txn->TicketObj;
+my $ticket = $txn ? $txn->TicketObj : undef;
 
-unless ($ticket->CurrentUserHasRight('ShowTicket')) {
+unless ($ticket && $ticket->CurrentUserHasRight('ShowTicket')) {
     $r->status(403);
     return;
 }
